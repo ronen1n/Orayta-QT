@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!-- DO NOT EDIT THIS: This file is populated automatically by the deployment tool. -->
+
+    <array name="bundled_libs">
+        <item>arm64-v8a;liborayta_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_iconengines_qsvgicon_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_imageformats_qgif_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_imageformats_qico_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_imageformats_qjpeg_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_imageformats_qsvg_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_networkinformation_qandroidnetworkinformation_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_platforms_qtforandroid_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_styles_qandroidstyle_arm64-v8a.so</item>
+        <item>arm64-v8a;libplugins_tls_qopensslbackend_arm64-v8a.so</item>
+        <!-- OpenSSL 3.x libraries for HTTPS support -->
+        <item>arm64-v8a;libcrypto_3.so</item>
+        <item>arm64-v8a;libssl_3.so</item>
+    </array>
+
+     <array name="qt_libs">
+        <item>arm64-v8a;c++_shared</item>
+        <item>arm64-v8a;Qt6Core_arm64-v8a</item>
+        <item>arm64-v8a;Qt6Gui_arm64-v8a</item>
+        <item>arm64-v8a;Qt6Network_arm64-v8a</item>
+        <item>arm64-v8a;Qt6Widgets_arm64-v8a</item>
+        <item>arm64-v8a;Qt6PrintSupport_arm64-v8a</item>
+        <item>arm64-v8a;Qt6Svg_arm64-v8a</item>
+     </array>
+
+    <array name="bundled_in_lib">
+    </array>
+    <array name="bundled_in_assets">
+    </array>
+    
+    <array name="load_local_libs">
+        <item>orayta_arm64-v8a</item>
+    </array>
+
+    <!-- Qt 6.5 requires these string resources -->
+    <string name="use_local_qt_libs">1</string>
+    <string name="bundle_local_qt_libs">1</string>
+    <string name="system_libs_prefix">/system/lib/</string>
+    <string name="static_init_classes"></string>
+
+</resources>

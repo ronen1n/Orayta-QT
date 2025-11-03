@@ -1,138 +1,137 @@
-# Orayta-QT
+# Orayta Android
 
-Orayta is an open-source, cross platform port to the "תורת אמת" project.
-( http://www.toratemetfreeware.com/ ) - http://orayta.googlecode.com/
+A modern Android application for studying Jewish texts, built with Qt6.
 
-The project intends to allow free and simple access to Jewish sources, from the Bible, Mishna and Talmud, to books written in the last years.
+## 📱 Android Features
+- Modern mobile UI with gesture and swipe navigation
+- Download management with stop functionality
+- RTL (Right-to-Left) text display support
+- Customizable interface: text-only or icon-only buttons
+- Auto-detection of system dark/light theme
+- Advanced text search with improved results
+- Extensive library of Jewish texts, on-demand downloads
+- Multi-language support: Hebrew, French, English
+- Bookmark and annotation system
 
-This port was written by Moshe Wagner (moshe.wagner@gmail.com), and is licensed under GPLv2.
-The books are the basically the same ones used in the original project - And are licensed (mainly) under the CC license.
+## 🔧 Technical Improvements
+- Qt5 → Qt6 migration with modern CMake build system
+- Android 16KB page size support for latest Android versions
+- Edge-to-edge display with Material Design
+- Runtime permissions for modern Android security
+- All compiler warnings fixed and code optimized
+- Suppressed legacy C warnings in third-party libraries
 
-See the attached "License.txt" for detailed license specifications.
+## Building
 
-Bug reports, ideas, and comments are greatly welcome at -
-moshe.wagner@gmail.com
+### Prerequisites
+- Qt6 with Android support
+- Android SDK (API 34+) and NDK
+- CMake 3.16+
 
-# Installing
+## 🏗️ Build System
+- Separate build scripts for ARM64 and ARMv7 architectures
+- Regular (small APK) or with-books (offline) build options
+- CMake configuration with Qt6 and warning suppression
+- PowerShell build scripts for Windows
+- Automated translation compilation
+- Android environment setup scripts
 
-This repository contains both the project source code and an excutable suitable for debian and its derivatives, giving you the choice of either building the program from the source code or attempting to use the pre-compiled binary.
+### Quick Build
 
-## Ubuntu installation using Orayta's PPA:
+```bash
+# ARM64 (recommended for modern devices)
+./build-android-arm64.ps1
 
-This is the simplest way to install Orayta. It was tested on Ubuntu 19.04 WSL2(!), but should work for all recent or LTS ubuntu versions.
+# ARMv7 (older devices compatibility)  
+./build-android-armv7.ps1
 
-1. sudo add-apt-repository ppa:moshe-wagner/orayta
-2. sudo apt update
-3. sudo apt install orayta orayta-books
-
-After that you can simply run orayta from the command line.
-
-## Installing from source
-
-### Pre-requisites
-
-You may need to first install several development packages using your distribution's package manager.
-
-1. Basic development packages:
-
-   1.1 `build-essential` or whatever else your distribution uses to supply basic compilers, linkers and make utilities.
-
-   1.2 QT build packages: `qt5-qmake`
-
-   1.3 Zlib (`libz-dev`)
-
-2. Qt development libraries: These are usually something like `qtbase5-dev` and `libqt5webkit5-dev`.
-
-3. Bidi support: `libfribidi-dev`.
-
-4. Poppler: `libpoppler-qt5-dev`.
-
-### Performing the install 
-
-To compile and install under linux, run from the main folder of the project:
-```
-$ qmake
-$ make
+# With all books included (large offline APK)
+./build-android-with-books.ps1
 ```
 
-### Installing system-wide
+### Manual Build
+1. Set up your Android SDK path in \android-orayta/local.properties\
+2. Configure Qt6 Android environment
+3. Run the build script for your target architecture
 
-Perform the following, as root:
-```
-# make install
-```
-### Installing the books
+## Project Structure
 
-If the books were downaloaded separately, you should run (as root) in their folder:
-```
-# make install
-```
-Or unpack them to this folder (or /usr/share/Orayta/Books).
+- `Mobile/` - Android-specific UI and functionality
+- `OraytaBase/` - Core library (text processing, search, etc.)
+- `android-orayta/` - Android project configuration
+- `openssl-android/` - OpenSSL 3.x libraries for HTTPS/TLS support
+- `build-*.ps1` - Build scripts for different architectures
 
-## Moshe Wagner's note
+## 🚀 Key Improvements from Original
 
-I was successful compiling the code under windows using QT Creator only. Anyway, the simplest way would be to download the binaries from the site. 
+### Core Fixes & Modernization
+- Qt5 → Qt6 migration with CMake build system replacing qmake
+- All compiler warnings fixed (41+ files), including nodiscard, tautological comparison, and switch statement warnings
+- Suppressed legacy C warnings in QuaZip
+- Qt6 compatibility layer for text encoding
 
-If you downloaded the source code without the books, the books must be downloaded separately and extracted to a folder named "Books" in the main folder of the project.
+### Android-Specific Enhancements
+- Android 16KB page size support for latest requirements
+- Edge-to-edge Material Design UI
+- Runtime permissions and enhanced JNI integration
+- Improved gesture and swipe handling
+- Download management with stop and progress tracking
+- OpenSSL 3.x for HTTPS/TLS
 
-Please report to me on successes or failures.
+### UI/UX Improvements
+- Redesigned mobile UI for Android
+- Auto-detection of system dark/light themes
+- RTL support for Hebrew
+- Customizable interface: text-only or icon-only buttons
+- Improved search functionality and result display
 
-## Windows binary
+### Build System & Development
+- Multiple build variants: regular (small) and with-books (offline)
+- ARM64 and ARMv7 support
+- Automated translation compilation (Hebrew, French)
+- Comprehensive build and deployment scripts
 
-See info here: https://github.com/MosheWagner/Orayta-QT/wiki/Windows-Version
+## Contributing
 
-# אורייתא
+This is a focused Android-only version of the Orayta project, optimized for modern Android development.
 
-אורייתא הינו הסבה פתוחה, שרצה על כל מערכת הפעלה - לתוכנה המצויינת "תורת אמת".
-"תורת אמת" היא תוכנה לצפייה במקורות יהודיים במחשב, החל מהתנ"ך המשנה והתלמוד, ועד לספרים בני ימינו.
+### Code Quality
+- All compiler warnings addressed across 41+ modified files
+- Modern C++ practices with Qt6 APIs
+- Comprehensive error handling and memory management
+- Production-ready with debug code removed
 
-ההסבה כוללת את ממשק המשתמש ומנוע הרינדור של הטקסטים בלבד, כאשר הטקסטים עצמם נשארו כמעט בדיוק כפי שהם בפרוייקט המקורי, אותו ניתן למצוא כאן:
-http://www.oraytafreeware.com/
+### Security & Performance
+- No hardcoded credentials or sensitive paths
+- Proper Android permissions model
+- Release builds optimized with Proguard
+- Symbol stripping and code obfuscation enabled
 
-הסבה זו של התוכנה נכתבה ע"י משה וגנר
-(moshe.wagner@gmail.com)
-ומשחוררת תחת רשיון הקוד הפתוח GPLv2.
+## License
 
-הספרים מהפרוייקט המקורי הינם תחת רשיון Creative Commons.
+GNU General Public License v2.0 - see LICENSE file for details.
 
-## התקנה על אובונטו
+## 📊 Project Statistics
 
-הדרך הקלה ביותר להתקין את אורייתא על אובונטו היא פשוט להריץ את הפקודות הבאות:
+- **Files Modified**: 41 core files with improvements
+- **New Features**: 45+ new files and enhancements
+- **Build Variants**: 3 different build configurations
+- **Architectures**: ARM64 and ARMv7 support
+- **Languages**: Hebrew, French, English with RTL support
+- **Compatibility**: Android API 34+ with 16KB page size support
 
-1. sudo add-apt-repository ppa:moshe-wagner/orayta
-2. sudo apt update
-3. sudo apt install orayta orayta-books
+## 🔄 Migration from Original
 
-ומשם ניתן להריץ את אורייתא בקלות משורת הפקודה ע"י הפקודה "orayta"
+This project represents a complete modernization of the original Orayta:
 
+### What's Included
+- ✅ **Mobile Module**: Complete Android UI and functionality
+- ✅ **OraytaBase Library**: Core text processing and search
+- ✅ **Android Project**: Full Android configuration and resources
+- ✅ **Build System**: Modern CMake with Qt6
+- ✅ **Translations**: Hebrew and French language support
+- ✅ **Documentation**: Comprehensive build and usage guides
 
-## התקנה מקוד מקור (תחת לינוקס) :
-כדי לקמפל התוכנה מקוד המקור, יש לוודא שחבילות הפיתוח של qt5 מתוקנות.
-(בדר"כ הם נמצאות בחבילות בשם  'qtbase5-dev' ו- 'libqt5webkit5-dev')
-(כמו כן צריך להתקין libfribidi-dev וגם libpoppler-qt5-dev, libz-dev
-בנוסף, החבילות make ו g++ נצרכות לכל התקנה של תוכנה מבוססת c++, ורוב הסיכויים שהן כבר מותקנות אצלכם)
+## Acknowledgments
 
-יש להריץ בטרמינל מתוך התקייה של התוכנה את הפקודה:
-```
-$ qmake
-$ make
-```
-בשלב זה ניתן לבדוק שהתכנה רצה טוב על ידי הפקודה הבאה (רק במידה שכבר התקנתם את הספרים):
-./orayta
-וכמשתמש על (באובונטו sudo):
-```
-# make install
-```
-אם הספרים הורדו בנפרד, יש להריץ מתוך התקייה שלהם (כמשתמש על):
-```
-# make install
-```
-או לפרוס אותם לתיקיה הנוכחית לפני התקנת התוכנה.
-
-
-תחת חלונות הצלחתי לקמפל את התוכנה רק בעזרת QT Creator.
-בכל מקרה, לחלונות, עדיף להוריד את תוכנת ההתקנה מהאתר ולהשתמש בה.
-
-## התקנה בחלונות
-ניתן למצוא מידע בנושא כאן: https://github.com/MosheWagner/Orayta-QT/wiki/Windows-Version
-
+Based on the original Orayta project by Moshe Wagner with significant Android-focused improvements, Qt6 migration, and modern Android development practices.

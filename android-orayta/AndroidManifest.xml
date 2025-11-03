@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+    package="org.Orayta" 
+    android:installLocation="auto"
+    android:versionCode="96" 
+    android:versionName="0.96">
+    
+    <application 
+        android:name="org.qtproject.qt.android.bindings.QtApplication"
+        android:extractNativeLibs="true"
+        android:hardwareAccelerated="true"
+        android:label="@string/app_name" 
+        android:icon="@drawable/icon" 
+        android:allowBackup="true" 
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+        
+        <activity 
+            android:name="org.Orayta.OraytaActivity"
+            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:screenOrientation="unspecified"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            
+            <!-- Application arguments -->
+            <meta-data android:name="android.app.arguments" android:value="-- %%INSERT_APP_ARGUMENTS%% --"/>
+            
+            <!-- Application library name -->
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
+            
+            <!-- Background running -->
+            <meta-data android:name="android.app.background_running" android:value="false"/>
+            
+            <!-- Extract android style - CRITICAL for Qt 6 -->
+            <!-- minimal is recommended for Qt 6 apps -->
+            <meta-data android:name="android.app.extract_android_style" android:value="minimal"/>
+            
+            <!-- Disable Qt accessibility to prevent deadlock crashes in Qt 6.10 -->
+            <meta-data android:name="android.app.accessibility.enabled" android:value="false"/>
+            
+            <!-- Disable dark mode handling to prevent Qt 6.10 crash -->
+            <meta-data android:name="android.app.auto_dark_mode_handling" android:value="false"/>
+            
+            <!-- Use bundled OpenSSL libraries -->
+            <meta-data android:name="android.app.bundle_local_qt_libs" android:value="1"/>
+            <meta-data android:name="android.app.load_local_libs" android:value="plugins/platforms/android/libplugins_platforms_qtforandroid.so:plugins/tls/libplugins_tls_qopensslbackend.so"/>
+            
+        </activity>
+    </application>
+
+<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35"/>
+
+    <supports-screens android:largeScreens="true" android:anyDensity="true" android:normalScreens="true" android:smallScreens="true"/>
+    
+    <!-- 16KB page size support is handled in application code -->
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    
+    <!-- Granular media permissions for Android 13+ -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+    
+    <!-- Legacy storage permissions for Android 12 and below -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="32"/>
+</manifest>
