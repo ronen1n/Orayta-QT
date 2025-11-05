@@ -196,7 +196,7 @@ Write-Host ""
 
 # Build the APK
 Write-Host "Building APK with books..." -ForegroundColor Yellow
-& .\build-android.ps1
+& .\build-android-arm64.ps1
 
 # Check if APK was created (regardless of exit code, since ninja can fail even on success)
 $apkPath = "build-android\android-build\build\outputs\apk\release\android-build-release.apk"
